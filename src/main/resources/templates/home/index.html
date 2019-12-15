@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master-page-layout}">
+<head>
+    <!--  <link rel="stylesheet" type="text/css" th:href="@{/css/home/index.css}" /> -->
+    <link rel="stylesheet" href="../../static/css/home/index.css" th:href="@{css/index.css}" /> 
+    
+    <title>HolyCross - PSM - Add a New Patient</title>
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <h3>Welcome to the HCMC Patients Management System (PMS)</h3>
+        <hr/>
+        <div style="font-size: 1em">
+        At HolyCross Center, We ar known for providing the very best in top-quality health-care to our patients.
+        On this system, you can see the <a href="/patients">List of our Patients</a>, 
+       including the special <a href="/elderlyPatients">List Of our Elderly Patients</a>.
+        You can also see the <a href="/patient">Register a new Patient</a>, 
+            instructions and key points provided below. And then click the
+            appropriate menu item, located on the menu-bar above.<br/><br/>
+
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with
+            the release of Letraset sheets containing Lorem Ipsum passages, and
+            more recently with desktop publishing software like Aldus PageMaker
+            including versions of Lorem Ipsum.
+        </div>
+    </th:block>
+
+    <th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

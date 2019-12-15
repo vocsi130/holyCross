@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master-page-layout}">
+<head>
+   
+     <link rel="stylesheet" href="../../static/css/patient/browse.css" th:href="@{css/browse.css}" /> 
+  
+    <title>HolyCross - PSM - List of Registered Patients</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div>
+        <span style="font-size: 1.5em">List of Registered Patients</span>
+        <span style="float:right;">
+                <a class="btn btn-outline-primary btn-lg" href="/patient">Register a New Patient</a>
+            </span>
+    </div>
+    <p>&nbsp;</p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Customer Number</th>
+            <th scope="col"> Full Name</th>
+            <th scope="col"> Email</th>
+            <th scope="col">Contact Phone Number</th>
+            <th scope="col">Date Of Birth</th>
+         <th scope="col">Out Patient</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="datarow" th:each="patient,iterStat : ${patients}" th:onclick="@{document.location='#'}">
+            <th scope="row" th:text="${iterStat.count}+'.'"></th>
+            <td th:text="${patient.patientNumber}"></td>
+            <td th:text="${patient.fullNames}"></td>
+            <td th:text="${patient.emailAddress}"></td>
+            <td th:text="${patient.contactPhoneNumber}"></td>
+            <td th:text="${patient.dateOfBirth}"></td>
+         <td th:text="${patient.isAnOutPatient}"></td>
+        </tr>
+        </tbody>
+    </table>
+</th:block>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

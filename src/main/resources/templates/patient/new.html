@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/master-page-layout}">
+
+<head>
+<link rel="stylesheet" href="../../static/css/product/new.css"
+	th:href="@{css/new.css}" />
+
+<title>HolyCross - PSM - Add a New Patient</title>
+</head>
+<body>
+	<!--onload="document.querySelector('#productNumber').focus();"-->
+	<th:block layout:fragment="content">
+		<h3>New Patient Registration Form</h3>
+
+		<form id="productForm" method="post" action="/patient"
+			th:object="${patient}">
+			<div class="row">
+				<div class="col-md-6">
+					<input type="hidden" name="patientId"
+						th:value="${patient.patientId}" />
+					<div class="form-group">
+						<label for="patientNumber">Patient Number</label> <small><span
+							th:if="${#fields.hasErrors('patientNumber')}"
+							th:errors="*{patientNumber}" class="alert alert-danger"></span></small> <input
+							id="patientNumber" name="patientNumber" type="text"
+							class="form-control" th:value="${patient.patientNumber}" required
+							autofocus="autofocus">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						 <div class="form-group">
+                                <label for="supplier">is this an OutPatient?</label>
+                                <span th:if="${#fields.hasErrors('isAnOutPatient')}" th:errors="*{isAnOutPatient}"
+                                      class="alert alert-danger"></span>
+                                 <select name="isAnOutPatient" id="isAnOutPatient" class="form-control" th:field="${patient.isAnOutPatient}"  required="required">
+                                   <option value="">Select Yes Or No</option>
+                                   <option th:value="'Yes'" th:text="Yes"></option>
+                                   <option th:value="'No'" th:text="No"></option>
+                                   <!--   <option th:value="${patient.isAnOutPatient}" th:text="Yes"></option>
+                                   <option th:value="${patient.isAnOutPatient}" th:text="No"></option> -->
+                                 </select> 
+                                 
+                           <!--        <select th:field="*{isAnOutPatient}">
+    <option th:value="'M'" th:text="Male"></option>
+    <option th:value="'F'" th:text="Female"></option>
+</select>-->
+                            </div>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="name">Full Name</label> <span
+							th:if="${#fields.hasErrors('fullNames')}"
+							th:errors="*{fullNames}" class="alert alert-danger"></span> <input
+							id="fullNames" name="fullNames" type="text" class="form-control"
+							th:value="${patient.fullNames}" required="required">
+					</div>
+
+				</div>
+
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="emailAddress">Email</label> <span
+							th:if="${#fields.hasErrors('emailAddress')}"
+							th:errors="*{emailAddress}" class="alert alert-danger"></span> <input
+							id="emailAddress" name="emailAddress" type="text"
+							class="form-control" th:value="${patient.emailAddress}"
+							required="required">
+					</div>
+				</div>
+
+				<div class="col-md-6">
+
+					<div class="form-group">
+						<label for="contactPhoneNumber">Contact</label> <span
+							th:if="${#fields.hasErrors('contactPhoneNumber')}"
+							th:errors="*{contactPhoneNumber}" class="alert alert-danger"></span>
+						<input id="contactPhoneNumber" name="contactPhoneNumber"
+							type="text" class="form-control"
+							th:value="${patient.contactPhoneNumber}" required="required">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="dateOfBirth">Date Of Birth</label> <span
+							th:if="${#fields.hasErrors('dateOfBirth')}"
+							th:errors="*{dateOfBirth}" class="alert alert-danger"></span> <input
+							id="dateOfBirth" name="dateOfBirth" type="date"
+							class="form-control" aria-describedby="dateOfBirthHelp"
+							th:value="${patient.dateOfBirth}" required="required"> <small
+							id="dateOfBirthHelp" class="form-text text-muted">Enter a
+							valid Date.</small>
+					</div>
+				</div>
+			</div>
+			<div style="float: right;">
+
+				<a href="/listPatients" class="btn btn-outline-warning"
+					style="margin-right: 2em;">Cancel</a>
+				<button id="btnSubmit" type="submit" class="btn btn-outline-primary">Register
+					Patient</button>
+			</div>
+
+		</form>
+	</th:block>
+	<br />
+	<br />
+	<th:block layout:fragment="footer" />
+
+</body>
+</html>
